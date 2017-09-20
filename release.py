@@ -1,9 +1,17 @@
+# Name: Matthew Bichay
+# Course: Systems Development in the Unix Environment
+# Semester: Fall 2017
+# Description: This script writes TAR files for binary and source releases
+
+
 import os
 import sys
 import subprocess
 import socket
 import getopt
 
+
+# Confirm Y/N for any question
 def confirm(question):
     prompt = ' [Y/N]: '
     choice = raw_input(question+prompt).lower()
@@ -11,6 +19,7 @@ def confirm(question):
         return True
     return False
 
+# Perform a make it install and capture the bin directory
 def generateBinaryRelease(root):
     yes = confirm('You have requested a binary release to be generated.')
     if yes:
@@ -26,6 +35,8 @@ def generateBinaryRelease(root):
         os.chdir('..')
         subprocess.call(tarCmd)
 
+
+# Perform a make clean, then capture the entire root directory
 def generateSourceRelease(root):
     yes = confirm('You have requested a source release to be generated.')
     if yes:
@@ -41,6 +52,7 @@ def main(args):
 
     root = 'homework1'
 
+    # Parse Arguments from the user -b: binary, -s: source
     try:
         opts, args = getopt.getopt(args, 'bs')
     except getopt.GetoptError as err:
