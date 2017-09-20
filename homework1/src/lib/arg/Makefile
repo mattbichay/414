@@ -13,6 +13,8 @@ PROJECT = libgetarg.a
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
+.SUFFIXES: .cpp .o
+
 .cpp.o:
 	$(CC) -c $<
 

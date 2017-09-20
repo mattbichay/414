@@ -18,6 +18,8 @@ PROJECT = conv_to_cent
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
+.SUFFIXES: .cpp .o
+
 .cpp.o:
 	$(CC) -c $<
 

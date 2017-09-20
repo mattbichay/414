@@ -16,6 +16,8 @@ PROJECT = conv_to_fahr
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
+.SUFFIXES: .cpp .o
+
 .cpp.o:
 	$(CC) -c $<
 
