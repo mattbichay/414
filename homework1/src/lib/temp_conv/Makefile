@@ -11,7 +11,7 @@ SRCS = cent_convert.cpp fahr_convert.cpp
 OBJS = $(SRCS:.cpp=.o)
 PROJECT = libtemp_convert.a
 FLAGS = -I$(INCLDIR)
-CC = clang++ $(FLAGS)
+CC = g++ $(FLAGS)
 
 .cpp.o:
 	$(CC) -c $<

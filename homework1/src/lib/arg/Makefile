@@ -11,7 +11,7 @@ SRCS = getarg.cpp
 OBJS = $(SRCS:.cpp=.o)
 PROJECT = libgetarg.a
 FLAGS = -I$(INCLDIR)
-CC = clang++ $(FLAGS)
+CC = g++ $(FLAGS)
 
 .cpp.o:
 	$(CC) -c $<

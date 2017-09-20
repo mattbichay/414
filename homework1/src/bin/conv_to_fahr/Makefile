@@ -14,7 +14,7 @@ LIBS = $(LIBDIR)/libtemp_convert.a
 OBJS = $(SRCS:.cpp=.o)
 PROJECT = conv_to_fahr
 FLAGS = -I$(INCLDIR)
-CC = clang++ $(FLAGS)
+CC = g++ $(FLAGS)
 
 .cpp.o:
 	$(CC) -c $<
