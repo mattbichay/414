@@ -1,12 +1,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <ctime>
-#include "log_mgr.h"
+#include <log_mgr.h>
 
-#include <iostream>
-
-
-using namespace std;
 
 int fd = ERROR;
 
