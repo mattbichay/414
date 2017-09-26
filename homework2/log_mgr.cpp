@@ -28,24 +28,18 @@ int log_event(Levels l, const char *fmt, ...)
 	va_start(args, fmt);
 	char formatted_string[1000];
 	vsprintf(formatted_string, fmt, args);
-	std::string fmt_string = time_str + ":" + std::string(LEVEL_STRINGS[l]) + ":" + std::string(formatted_string);
-	const char * string = fmt_string.c_str();
+	std::string fmt_string = time_str + ":" + std::string(LEVEL_STRINGS[l]) + ":" + std::string(formatted_string) + "\n";
 
-    /*
-    if (write(fd, string, sizeof(string)))
+    if (write(fd, fmt_string.c_str(), fmt_string.length()) == fmt_string.length())
     {
         return OK;
     }
-    */
-
-    cout << (write(fd, &string, fmt_string.length())) << endl;
-    cerr << strerror(errno) << endl;
     return ERROR;
 }
 
 int set_logfile(const char *logfile_name)
 {
-    int filedesc = open(logfile_name, O_WRONLY | O_CREAT | O_APPEND, 0777);
+    int filedesc = open(logfile_name, O_WRONLY | O_CREAT | O_APPEND | O_SYNC, 0777);
     if (filedesc < 0)
         return ERROR;
 
