@@ -1,7 +1,7 @@
 # Name: Matthew Bichay
 # Course: Systems Development in the Unix Environment
 # Semester: Fall 2017
-# Description: Make file for conv_to_cent binary
+# Description: Make file for test_log2 binary
 
 
 
