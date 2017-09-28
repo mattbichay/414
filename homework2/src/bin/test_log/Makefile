@@ -13,7 +13,7 @@ INCLDIR = $(PROJECT_ROOT)/include
 SRCS = test_log.c
 LIBS = $(LIBDIR)/liblog_mgr.a
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.c=.o)
 PROJECT = test_log
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
