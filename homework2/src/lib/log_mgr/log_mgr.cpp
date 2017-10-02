@@ -10,6 +10,7 @@
 #include <ctime>
 #include <stdarg.h>
 #include <cstdarg>
+#include <cstdio>
 #include <log_mgr.h>
 
 // Base initialization of the first file descriptor
