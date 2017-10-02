@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <ctime>
+#include <stdarg.h>
+#include <cstdarg>
 #include <log_mgr.h>
 
 // Base initialization of the first file descriptor
