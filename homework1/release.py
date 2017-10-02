@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/python
 # Name: Matthew Bichay
 # Course: Systems Development in the Unix Environment
 # Semester: Fall 2017
@@ -28,12 +28,10 @@ def generateBinaryRelease(root):
         if not hostName:
             hostName = socket.gethostname()
 
-        tarballName = '{}_{}.tar'.format(root, hostName)
+        tarballName = '{}_{}.tar'.format(os.path.split(os.path.abspath(root))[1], hostName)
         makeCmd = ['make', 'it', 'install']
-        tarCmd = ['tar', 'cvf', tarballName, os.path.join(os.curdir, root, 'bin')]
-        os.chdir(root)
+        tarCmd = ['tar', 'cvf', tarballName, os.path.join(root, 'bin')]
         subprocess.call(makeCmd)
-        os.chdir('..')
         subprocess.call(tarCmd)
 
 
@@ -41,17 +39,18 @@ def generateBinaryRelease(root):
 def generateSourceRelease(root):
     yes = confirm('You have requested a source release to be generated.')
     if yes:
-        tarballName = '{}.tar'.format(root)
+        tarballName = '{}.tar'.format(os.path.split(os.path.abspath(root))[1])
         makeCmd = ['make', 'clean']
-        tarCmd = ['tar', 'cvf', tarballName, os.path.join(os.curdir, root)]
-        os.chdir(root)
+        tarCmd = ['tar', 'cvf', tarballName, os.path.join(root, 'bin'),
+                  os.path.join(root, 'lib'), os.path.join(root, 'lib'),
+                  os.path.join(root, 'src'), os.path.join(root, 'include'),
+                  os.path.join(root, 'release.py')]
         subprocess.call(makeCmd)
-        os.chdir('..')
         subprocess.call(tarCmd)
 
 def main(args):
 
-    root = 'homework1'
+    root = os.curdir
 
     # Parse Arguments from the user -b: binary, -s: source
     try:
