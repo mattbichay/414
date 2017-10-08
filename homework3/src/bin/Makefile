@@ -1,10 +1,10 @@
 # Name: Matthew Bichay
 # Course: Systems Development in the Unix Environment
 # Semester: Fall 2017
-# Description: Top level make file for the lots_of_logs, test_log and log_2
+# Description: Top level make file for the my_fortune and pipe
 # binaries
 
-SUBS = lots_of_logs test_log test_log2
+SUBS = my_fortune pipe
 
 it install depend clean:
 		-X=`pwd`; \

@@ -1,7 +1,7 @@
 # Name: Matthew Bichay
 # Course: Systems Development in the Unix Environment
 # Semester: Fall 2017
-# Description: Make file for lots_of_logs binary
+# Description: Make file for my_fortune binary
 
 
 
@@ -10,11 +10,11 @@ BINDIR = $(PROJECT_ROOT)/bin
 LIBDIR = $(PROJECT_ROOT)/lib
 INCLDIR = $(PROJECT_ROOT)/include
 
-SRCS = lots_of_logs.c
+SRCS = pipe.cpp
 LIBS = $(LIBDIR)/liblog_mgr.a
 
-OBJS = $(SRCS:.c=.o)
-PROJECT = lots_of_logs
+OBJS = $(SRCS:.cpp=.o)
+PROJECT = pipe
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
@@ -44,7 +44,7 @@ depend: $(SRCS)
 
 
 # DO NOT DELETE THIS LINE
-lots_of_logs.o: lots_of_logs.c \
+test_log.o: test_log.c \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/unistd.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types.h \
