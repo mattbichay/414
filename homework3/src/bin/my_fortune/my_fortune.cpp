@@ -36,6 +36,10 @@ string upper(string in_str)
     return in_str;
 }
 
+/* This method takes an integer argument, reverts the current executable's
+ * flags, and then exits with that integer argument. This method is used as
+ * a signal handler for signal interrupts
+ */
 void revert_flags(int sig)
 {
     if (fcntl(0, F_SETFL, origflags < 0))
@@ -73,8 +77,8 @@ int main()
     string fortune_executable = ABSAROKA_FORTUNE;
     if (string(hostname) == "dev3")
         fortune_executable = DEV3_FORTUNE;
-    log_event(INFO, "hostname:%s", string(hostname));
-    log_event(INFO, "application:%s", string(fortune_executable));
+    log_event(INFO, "hostname:%s", hostname);
+    log_event(INFO, "application:%s", fortune_executable);
 
     /* Initialize sufficiently large buffer for pipe */
     char readbuf[2000];
