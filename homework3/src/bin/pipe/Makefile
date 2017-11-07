@@ -10,17 +10,17 @@ BINDIR = $(PROJECT_ROOT)/bin
 LIBDIR = $(PROJECT_ROOT)/lib
 INCLDIR = $(PROJECT_ROOT)/include
 
-SRCS = pipe.cpp
+SRCS = pipe.c
 LIBS = $(LIBDIR)/liblog_mgr.a
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.c=.o)
 PROJECT = pipe
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
 .SUFFIXES: .c .o
 
-.cpp.o:
+.c.o:
 	$(CC) -c $<
 
 $(PROJECT): $(OBJS)
@@ -44,136 +44,99 @@ depend: $(SRCS)
 
 
 # DO NOT DELETE THIS LINE
-test_log.o: test_log.c \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/unistd.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/cdefs.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_symbol_aliasing.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_posix_availability.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/machine/_types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/i386/_types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_pthread/_pthread_types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/unistd.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_posix_vdisable.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_seek_set.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_size_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_uint64_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/Availability.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/AvailabilityInternal.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_ssize_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_uid_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_gid_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_intptr_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_off_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_pid_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_useconds_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_null.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/select.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/appleapiopts.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_def.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_timespec.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_timeval.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_time_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_suseconds_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_sigset_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_setsize.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_set.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_clr.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_isset.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_zero.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_fd_copy.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_select.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_dev_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_mode_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_uuid_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/gethostuuid.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/stdlib.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/wait.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_id_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/signal.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/machine/signal.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/i386/signal.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/machine/_mcontext.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/i386/_mcontext.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/mach/i386/_structs.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_pthread/_pthread_attr_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_sigaltstack.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_ucontext.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/resource.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/stdint.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/stdint.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_int8_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_int16_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_int32_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_int64_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_uint8_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_uint16_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_uint32_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_uintptr_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_intmax_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_uintmax_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/machine/endian.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/i386/endian.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_endian.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/_OSByteOrder.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/libkern/i386/_OSByteOrder.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/alloca.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_ct_rune_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_rune_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_wchar_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/machine/types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/i386/types.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_u_int8_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_u_int16_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_u_int32_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_u_int64_t.h \
-  ../../../include/log_mgr.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/string \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iosfwd \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/wchar.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_mbstate_t.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/stdarg.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/stdio.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_va_list.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/stdio.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/time.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_clock_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_wctype.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_wint_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_wctype_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/ctype.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/runetype.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstring \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/string.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_rsize_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/sys/_types/_errno_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/strings.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstdio \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cwchar \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cwctype \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cctype \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/wctype.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include/_types/_wctrans_t.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/algorithm \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/initializer_list \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/stddef.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/utility \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__tuple \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/typeinfo \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/exception \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstdint \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/new \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__undef___deallocate \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/limits \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__undef_min_max \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/iterator \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__functional_base \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__functional_base_03 \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__debug \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/tuple \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/stdexcept
+pipe.o: pipe.c /usr/include/stdio.h /usr/include/sys/feature_tests.h \
+ /usr/include/sys/ccompile.h /usr/include/sys/isa_defs.h \
+ /usr/include/iso/stdio_iso.h /usr/include/sys/va_list.h \
+ /usr/include/stdio_tag.h /usr/include/stdio_impl.h \
+ /usr/include/iso/stdio_c99.h /usr/include/stdlib.h \
+ /usr/include/iso/stdlib_iso.h /usr/include/iso/stdlib_c99.h \
+ /usr/include/sys/wait.h /usr/include/sys/types.h \
+ /usr/include/sys/machtypes.h /usr/include/sys/int_types.h \
+ /usr/include/sys/select.h /usr/include/sys/time_impl.h \
+ /usr/include/sys/time.h /usr/include/time.h /usr/include/iso/time_iso.h \
+ /usr/include/sys/resource.h /usr/include/sys/siginfo.h \
+ /usr/include/sys/machsig.h /usr/include/sys/procset.h \
+ /usr/include/sys/signal.h /usr/include/sys/iso/signal_iso.h \
+ /usr/include/sys/unistd.h /usr/include/sys/ucontext.h \
+ /usr/include/sys/regset.h /usr/include/v7/sys/privregs.h \
+ /usr/include/v7/sys/psr.h /usr/include/sys/fsr.h /usr/include/unistd.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/iostream \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++config.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/os_defines.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/cpu_defines.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ostream \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ios \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/iosfwd \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stringfwd.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/postypes.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cwchar \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstddef \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include/stddef.h \
+ /usr/include/wchar.h /usr/include/iso/wchar_iso.h \
+ /usr/include/wchar_impl.h /usr/include/ctype.h \
+ /usr/include/iso/ctype_iso.h /usr/include/iso/ctype_c99.h \
+ /usr/include/iso/wchar_c99.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/char_traits.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_algobase.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/functexcept.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception_defines.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/cpp_type_traits.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/type_traits.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/numeric_traits.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_pair.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/move.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/concept_check.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_types.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_funcs.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/debug/debug.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/localefwd.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++locale.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/clocale \
+ /usr/include/locale.h /usr/include/iso/locale_iso.h \
+ /usr/local/include/libintl.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cctype \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ios_base.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/atomicity.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr-default.h \
+ /usr/include/pthread.h /usr/include/sched.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/atomic_word.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_classes.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/string \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/allocator.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++allocator.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/new_allocator.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/new \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ostream_insert.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cxxabi-forced.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_function.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/backward/binders.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/initializer_list \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_classes.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/streambuf \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/streambuf.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_ios.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_facets.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cwctype \
+ /usr/include/wctype.h /usr/include/iso/wctype_iso.h \
+ /usr/include/iso/wctype_c99.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/ctype_base.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/streambuf_iterator.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/ctype_inline.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_facets.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_ios.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ostream.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/istream \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/istream.tcc \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/vector \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_construct.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_uninitialized.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_vector.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_bvector.h \
+ /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/vector.tcc \
+ /usr/include/string.h /usr/include/iso/string_iso.h \
+ ../../../include/log_mgr.h

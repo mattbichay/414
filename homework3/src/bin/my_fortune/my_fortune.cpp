@@ -16,7 +16,9 @@
 #include "log_mgr.h"
 
 #define QUITCHAR 'q'
-
+#ifndef HOST_NAME_MAX
+#define HOST_NAME_MAX _POSIX_HOST_NAME_MAX
+#endif
 using namespace std;
 
 /* Paths to the fortune application */
@@ -78,7 +80,7 @@ int main()
     if (string(hostname) == "dev3")
         fortune_executable = DEV3_FORTUNE;
     log_event(INFO, "hostname:%s", hostname);
-    log_event(INFO, "application:%s", fortune_executable);
+    log_event(INFO, "application:%s", fortune_executable.c_str());
 
     /* Initialize sufficiently large buffer for pipe */
     char readbuf[2000];
