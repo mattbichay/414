@@ -9,7 +9,7 @@ INCLDIR = $(PROJECT_ROOT)/include
 
 SRCS = shared_mem.cpp
 OBJS = $(SRCS:.cpp=.o)
-PROJECT = shmlib.a
+PROJECT = libshmlib.a
 FLAGS = -I$(INCLDIR)
 CC = g++ $(FLAGS)
 
@@ -40,70 +40,16 @@ depend: $(SRCS)
 
 
 # DO NOT DELETE THIS LINE
-log_mgr.o: log_mgr.cpp /usr/include/unistd.h \
- /usr/include/sys/feature_tests.h /usr/include/sys/ccompile.h \
- /usr/include/sys/isa_defs.h /usr/include/sys/types.h \
- /usr/include/sys/machtypes.h /usr/include/sys/int_types.h \
- /usr/include/sys/select.h /usr/include/sys/time_impl.h \
- /usr/include/sys/time.h /usr/include/time.h /usr/include/iso/time_iso.h \
- /usr/include/sys/unistd.h /usr/include/fcntl.h /usr/include/sys/stat.h \
- /usr/include/sys/stat_impl.h /usr/include/sys/fcntl.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ctime \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstddef \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++config.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/os_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/cpu_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include/stddef.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include/stdarg.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstdarg \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstdio \
- /usr/include/stdio.h /usr/include/iso/stdio_iso.h \
- /usr/include/sys/va_list.h /usr/include/stdio_tag.h \
- /usr/include/stdio_impl.h /usr/include/iso/stdio_c99.h \
- ../../../include/log_mgr.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/string \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stringfwd.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/char_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_algobase.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/functexcept.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/cpp_type_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/type_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/numeric_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_pair.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/move.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/concept_check.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_types.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_funcs.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/debug/debug.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/postypes.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cwchar \
- /usr/include/wchar.h /usr/include/iso/wchar_iso.h \
- /usr/include/wchar_impl.h /usr/include/ctype.h \
- /usr/include/iso/ctype_iso.h /usr/include/iso/ctype_c99.h \
- /usr/include/iso/wchar_c99.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/new_allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/new \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/localefwd.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++locale.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/clocale \
- /usr/include/locale.h /usr/include/iso/locale_iso.h \
- /usr/local/include/libintl.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/iosfwd \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cctype \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ostream_insert.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cxxabi-forced.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_function.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/backward/binders.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/atomicity.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr-default.h \
- /usr/include/pthread.h /usr/include/sched.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/atomic_word.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/initializer_list \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.tcc
+shared_mem.o: shared_mem.cpp /usr/include/stdc-predef.h \
+ ../../../include/shared_mem.h /usr/include/sys/shm.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/bits/long-double.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include/stddef.h \
+ /usr/include/sys/ipc.h /usr/include/bits/ipctypes.h \
+ /usr/include/bits/ipc.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/bits/shm.h \
+ /usr/include/bits/types/time_t.h /usr/include/c++/7.2.0/cstddef \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h
