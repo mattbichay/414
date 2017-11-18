@@ -19,7 +19,6 @@ void initialize_manager()
         Shm_Manager[i].shmid = -999;
         Shm_Manager[i].key = -999;
         Shm_Manager[i].addr = NULL;
-        Shm_Manager[i].pid = -999;
         Shm_Manager[i].in_use = 0;
     }
     connections++;

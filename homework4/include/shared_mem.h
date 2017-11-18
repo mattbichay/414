@@ -16,17 +16,9 @@
 
 typedef struct
 {
-    int is_valid;
-    float x;
-    float y;
-} Shm_Struct;
-
-typedef struct
-{
     int shmid;
     int key;
     void* addr;
-    int pid;
     int in_use;
 } Shm_Metadata;
 
