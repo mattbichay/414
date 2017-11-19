@@ -2,10 +2,35 @@
 #include <fstream>
 #include <sstream>
 #include <unistd.h>
+#include <signal.h>
 #include "shared_mem.h"
 #include "shm.h"
 
 using namespace std;
+
+static ifstream F_STREAM;
+static Shm_Struct * DATA;
+
+void handle_sighup(int sig)
+{
+    cout << "SIGHUP" << endl;
+    F_STREAM.clear();
+    F_STREAM.seekg(0, ios::beg);
+    for (int i = 0; i < TOTAL; ++i)
+    {
+        DATA[i].is_valid = 0;
+        DATA[i].x = 0;
+        DATA[i].y = 0;
+    }
+}
+
+void handle_sigterm(int sig)
+{
+    cout << "SIGTERM" << endl;
+    detach_shm(DATA);
+    destroy_shm(KEY);
+    exit(sig);
+}
 
 int main(int argc, char * argv[])
 {
@@ -14,14 +39,17 @@ int main(int argc, char * argv[])
 
     std::string in_file(argv[1]);
     
-    ifstream file(in_file, ifstream::in);
-
-    Shm_Struct * data = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
-    if (data == NULL)
+    F_STREAM = ifstream(in_file, ifstream::in);
+    
+    DATA = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
+    if (DATA == NULL)
         return ERROR;
 
+    signal(SIGHUP, handle_sighup);
+    signal(SIGTERM, handle_sigterm);
+
     std::string line;
-    while(std::getline(file, line))
+    while(std::getline(F_STREAM, line))
     {
         int index, time;
         float x,y;
@@ -35,17 +63,17 @@ int main(int argc, char * argv[])
         if (time < 0)
         {
             sleep(abs(time));
-            data[index].is_valid = 0;
+            DATA[index].is_valid = 0;
             continue;
         }
         
         sleep(time);
-        data[index].is_valid = 1;
-        data[index].x = x;
-        data[index].y = y;
+        DATA[index].is_valid = 1;
+        DATA[index].x = x;
+        DATA[index].y = y;
 
     }
-    file.close();
+    F_STREAM.close();
     destroy_shm(KEY);
     return OK;
 }
