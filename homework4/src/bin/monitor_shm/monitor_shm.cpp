@@ -1,5 +1,6 @@
 #include "shared_mem.h"
 #include "shm.h"
+#include "log_mgr.h"
 #include <unistd.h>
 #include <iostream>
 
@@ -15,7 +16,10 @@ int main(int argc, char *argv[])
 
     Shm_Struct * data = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
     if (data == NULL)
+    {
+        log_event(FATAL, "Error:%s", "Could not connect to shared memory segment.");
         return ERROR;
+    }
 
     for (int i = 0; i < time; ++i)
     {
@@ -42,4 +46,5 @@ int main(int argc, char *argv[])
             cout << "At time " << i << ":" << valid << " elements are active:x = " << x/float(valid) << " and y = " << y/(float(valid)) << endl;
         }
     }
+    return OK;
 }
