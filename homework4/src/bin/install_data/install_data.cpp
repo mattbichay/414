@@ -5,6 +5,7 @@
 #include <signal.h>
 #include "shared_mem.h"
 #include "shm.h"
+#include "log_mgr.h"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ static Shm_Struct * DATA;
 
 void handle_sighup(int sig)
 {
-    cout << "SIGHUP" << endl;
     F_STREAM.clear();
     F_STREAM.seekg(0, ios::beg);
     for (int i = 0; i < TOTAL; ++i)
@@ -26,16 +26,26 @@ void handle_sighup(int sig)
 
 void handle_sigterm(int sig)
 {
-    cout << "SIGTERM" << endl;
-    detach_shm(DATA);
-    destroy_shm(KEY);
+    if (detach_shm(DATA) < 0)
+    {
+        log_event(FATAL, "Error:%s", "Could not detach from shared memory.");
+        exit(ERROR);
+    }
+    if (destroy_shm(KEY) < 0)
+    {
+        log_event(FATAL, "Error:%s", "Could not destroy shared memory.");
+        exit(ERROR);
+    }
     exit(sig);
 }
 
 int main(int argc, char * argv[])
 {
     if (argc < 2)
+    {
+        log_event(FATAL, "Error:%s", "Input file is required.");
         return ERROR;
+    }
 
     std::string in_file(argv[1]);
     
@@ -43,7 +53,10 @@ int main(int argc, char * argv[])
     
     DATA = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
     if (DATA == NULL)
+    {
+        log_event(FATAL, "Error:%s", "Could not connect to shared memory.");
         return ERROR;
+    }
 
     signal(SIGHUP, handle_sighup);
     signal(SIGTERM, handle_sigterm);
@@ -74,6 +87,11 @@ int main(int argc, char * argv[])
 
     }
     F_STREAM.close();
-    destroy_shm(KEY);
+
+    if (destroy_shm(KEY) < 0)
+    {
+        log_event(FATAL, "Error:%s", "Could not destroy shared memory.");
+        return ERROR;
+    }
     return OK;
 }
