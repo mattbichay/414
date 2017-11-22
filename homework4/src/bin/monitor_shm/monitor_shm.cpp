@@ -3,6 +3,7 @@
 #include "log_mgr.h"
 #include <unistd.h>
 #include <iostream>
+#include <cstdlib>
 
 #define DEFAULT_TIME 30;
 
