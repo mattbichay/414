@@ -3,19 +3,20 @@
 #include <sstream>
 #include <unistd.h>
 #include <signal.h>
+#include <cstdlib>
 #include "shared_mem.h"
 #include "shm.h"
 #include "log_mgr.h"
 
 using namespace std;
 
-static ifstream F_STREAM;
+static ifstream * F_STREAM;
 static Shm_Struct * DATA;
 
 void handle_sighup(int sig)
 {
-    F_STREAM.clear();
-    F_STREAM.seekg(0, ios::beg);
+    F_STREAM->clear();
+    F_STREAM->seekg(0, ios::beg);
     for (int i = 0; i < TOTAL; ++i)
     {
         DATA[i].is_valid = 0;
@@ -36,7 +37,7 @@ void handle_sigterm(int sig)
         log_event(FATAL, "Error:%s", "Could not destroy shared memory.");
         exit(ERROR);
     }
-    F_STREAM.close();
+    F_STREAM->close();
     exit(sig);
 }
 
@@ -50,7 +51,7 @@ int main(int argc, char * argv[])
 
     std::string in_file(argv[1]);
     
-    F_STREAM = ifstream(in_file, ifstream::in);
+    F_STREAM = new ifstream(in_file.c_str(), ifstream::in);
     
     DATA = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
     if (DATA == NULL)
@@ -63,7 +64,7 @@ int main(int argc, char * argv[])
     signal(SIGTERM, handle_sigterm);
 
     std::string line;
-    while(std::getline(F_STREAM, line))
+    while(std::getline(*F_STREAM, line))
     {
         int index, time;
         float x,y;
@@ -87,7 +88,7 @@ int main(int argc, char * argv[])
         DATA[index].y = y;
 
     }
-    F_STREAM.close();
+    F_STREAM->close();
 
     if (destroy_shm(KEY) < 0)
     {
