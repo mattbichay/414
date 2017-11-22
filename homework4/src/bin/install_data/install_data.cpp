@@ -36,6 +36,7 @@ void handle_sigterm(int sig)
         log_event(FATAL, "Error:%s", "Could not destroy shared memory.");
         exit(ERROR);
     }
+    F_STREAM.close();
     exit(sig);
 }
 

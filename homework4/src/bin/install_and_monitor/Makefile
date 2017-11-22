@@ -24,7 +24,7 @@ CC = g++ $(FLAGS)
 	$(CC) -c $<
 
 $(PROJECT): $(OBJS)
-	$(CC) $(OBJS) $(LIBS) -o $@
+	$(CC) -lpthread $(OBJS) $(LIBS) -o $@
 
 it: $(PROJECT)
 
@@ -44,103 +44,123 @@ depend: $(SRCS)
 
 
 # DO NOT DELETE THIS LINE
-my_fortune.o: my_fortune.cpp \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/iostream \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++config.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/os_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/cpu_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ostream \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ios \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/iosfwd \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stringfwd.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/postypes.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cwchar \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstddef \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include/stddef.h \
- /usr/include/wchar.h /usr/include/sys/feature_tests.h \
- /usr/include/sys/ccompile.h /usr/include/sys/isa_defs.h \
- /usr/include/iso/wchar_iso.h /usr/include/stdio_tag.h \
- /usr/include/wchar_impl.h /usr/include/iso/time_iso.h \
- /usr/include/stdio.h /usr/include/iso/stdio_iso.h \
- /usr/include/sys/va_list.h /usr/include/stdio_impl.h \
- /usr/include/iso/stdio_c99.h /usr/include/ctype.h \
- /usr/include/iso/ctype_iso.h /usr/include/iso/ctype_c99.h \
- /usr/include/iso/wchar_c99.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/char_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_algobase.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/functexcept.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/exception_defines.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/cpp_type_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/type_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/numeric_traits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_pair.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/move.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/concept_check.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_types.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator_base_funcs.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_iterator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/debug/debug.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/localefwd.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++locale.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/clocale \
- /usr/include/locale.h /usr/include/iso/locale_iso.h \
- /usr/local/include/libintl.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cctype \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ios_base.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/atomicity.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/gthr-default.h \
- /usr/include/pthread.h /usr/include/sys/types.h \
- /usr/include/sys/machtypes.h /usr/include/sys/int_types.h \
- /usr/include/sys/select.h /usr/include/sys/time_impl.h \
- /usr/include/sys/time.h /usr/include/time.h /usr/include/sched.h \
- /usr/include/unistd.h /usr/include/sys/unistd.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/atomic_word.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_classes.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/string \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/c++allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/ext/new_allocator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/new \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ostream_insert.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cxxabi-forced.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/stl_function.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/backward/binders.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/initializer_list \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_string.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_classes.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/streambuf \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/streambuf.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_ios.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_facets.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cwctype \
- /usr/include/wctype.h /usr/include/iso/wctype_iso.h \
- /usr/include/iso/wctype_c99.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/ctype_base.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/streambuf_iterator.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/sparc-sun-solaris2.11/bits/ctype_inline.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/locale_facets.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/basic_ios.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/ostream.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/istream \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/bits/istream.tcc \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include-fixed/limits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/include-fixed/syslimits.h \
- /usr/include/limits.h /usr/include/iso/limits_iso.h \
- /usr/include/sys/int_limits.h \
- /usr/gcc/4.5/lib/gcc/sparc-sun-solaris2.11/4.5.2/../../../../include/c++/4.5.2/cstdlib \
- /usr/include/stdlib.h /usr/include/iso/stdlib_iso.h \
- /usr/include/iso/stdlib_c99.h /usr/include/sys/wait.h \
- /usr/include/sys/resource.h /usr/include/sys/siginfo.h \
- /usr/include/sys/machsig.h /usr/include/sys/procset.h \
- /usr/include/sys/signal.h /usr/include/sys/iso/signal_iso.h \
- /usr/include/sys/ucontext.h /usr/include/sys/regset.h \
- /usr/include/v7/sys/privregs.h /usr/include/v7/sys/psr.h \
- /usr/include/sys/fsr.h /usr/include/string.h \
- /usr/include/iso/string_iso.h /usr/include/fcntl.h \
- /usr/include/sys/stat.h /usr/include/sys/stat_impl.h \
- /usr/include/sys/fcntl.h /usr/include/errno.h /usr/include/sys/errno.h \
- /usr/include/signal.h /usr/include/iso/signal_iso.h \
- ../../../include/log_mgr.h
+install_and_monitor.o: install_and_monitor.cpp /usr/include/stdc-predef.h \
+ /usr/include/pthread.h /usr/include/features.h /usr/include/sys/cdefs.h \
+ /usr/include/bits/wordsize.h /usr/include/bits/long-double.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/include/endian.h /usr/include/bits/endian.h \
+ /usr/include/bits/byteswap.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h /usr/include/bits/byteswap-16.h \
+ /usr/include/bits/uintn-identity.h /usr/include/sched.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include/stddef.h \
+ /usr/include/bits/types/time_t.h \
+ /usr/include/bits/types/struct_timespec.h /usr/include/bits/sched.h \
+ /usr/include/bits/cpu-set.h /usr/include/time.h /usr/include/bits/time.h \
+ /usr/include/bits/timex.h /usr/include/bits/types/struct_timeval.h \
+ /usr/include/bits/types/clock_t.h /usr/include/bits/types/struct_tm.h \
+ /usr/include/bits/types/clockid_t.h /usr/include/bits/types/timer_t.h \
+ /usr/include/bits/types/struct_itimerspec.h \
+ /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
+ /usr/include/bits/pthreadtypes.h /usr/include/bits/thread-shared-types.h \
+ /usr/include/bits/pthreadtypes-arch.h /usr/include/bits/setjmp.h \
+ /usr/include/c++/7.2.0/iostream \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/c++config.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/os_defines.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+ /usr/include/c++/7.2.0/ostream /usr/include/c++/7.2.0/ios \
+ /usr/include/c++/7.2.0/iosfwd /usr/include/c++/7.2.0/bits/stringfwd.h \
+ /usr/include/c++/7.2.0/bits/memoryfwd.h \
+ /usr/include/c++/7.2.0/bits/postypes.h /usr/include/c++/7.2.0/cwchar \
+ /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
+ /usr/include/bits/floatn.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include/stdarg.h \
+ /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
+ /usr/include/bits/types/mbstate_t.h \
+ /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
+ /usr/include/bits/types/FILE.h /usr/include/c++/7.2.0/exception \
+ /usr/include/c++/7.2.0/bits/exception.h \
+ /usr/include/c++/7.2.0/bits/exception_ptr.h \
+ /usr/include/c++/7.2.0/bits/exception_defines.h \
+ /usr/include/c++/7.2.0/bits/cxxabi_init_exception.h \
+ /usr/include/c++/7.2.0/typeinfo /usr/include/c++/7.2.0/bits/hash_bytes.h \
+ /usr/include/c++/7.2.0/new \
+ /usr/include/c++/7.2.0/bits/nested_exception.h \
+ /usr/include/c++/7.2.0/bits/move.h \
+ /usr/include/c++/7.2.0/bits/concept_check.h \
+ /usr/include/c++/7.2.0/type_traits \
+ /usr/include/c++/7.2.0/bits/char_traits.h \
+ /usr/include/c++/7.2.0/bits/stl_algobase.h \
+ /usr/include/c++/7.2.0/bits/functexcept.h \
+ /usr/include/c++/7.2.0/bits/cpp_type_traits.h \
+ /usr/include/c++/7.2.0/ext/type_traits.h \
+ /usr/include/c++/7.2.0/ext/numeric_traits.h \
+ /usr/include/c++/7.2.0/bits/stl_pair.h \
+ /usr/include/c++/7.2.0/bits/stl_iterator_base_types.h \
+ /usr/include/c++/7.2.0/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/7.2.0/debug/assertions.h \
+ /usr/include/c++/7.2.0/bits/stl_iterator.h \
+ /usr/include/c++/7.2.0/bits/ptr_traits.h \
+ /usr/include/c++/7.2.0/debug/debug.h \
+ /usr/include/c++/7.2.0/bits/predefined_ops.h \
+ /usr/include/c++/7.2.0/cstdint \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-intn.h \
+ /usr/include/bits/stdint-uintn.h /usr/include/c++/7.2.0/bits/localefwd.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/c++locale.h \
+ /usr/include/c++/7.2.0/clocale /usr/include/locale.h \
+ /usr/include/bits/locale.h /usr/include/c++/7.2.0/cctype \
+ /usr/include/ctype.h /usr/include/c++/7.2.0/bits/ios_base.h \
+ /usr/include/c++/7.2.0/ext/atomicity.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/gthr.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/gthr-default.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/atomic_word.h \
+ /usr/include/c++/7.2.0/bits/locale_classes.h \
+ /usr/include/c++/7.2.0/string /usr/include/c++/7.2.0/bits/allocator.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/c++allocator.h \
+ /usr/include/c++/7.2.0/ext/new_allocator.h \
+ /usr/include/c++/7.2.0/bits/ostream_insert.h \
+ /usr/include/c++/7.2.0/bits/cxxabi_forced.h \
+ /usr/include/c++/7.2.0/bits/stl_function.h \
+ /usr/include/c++/7.2.0/backward/binders.h \
+ /usr/include/c++/7.2.0/bits/range_access.h \
+ /usr/include/c++/7.2.0/initializer_list \
+ /usr/include/c++/7.2.0/bits/basic_string.h \
+ /usr/include/c++/7.2.0/ext/alloc_traits.h \
+ /usr/include/c++/7.2.0/bits/alloc_traits.h \
+ /usr/include/c++/7.2.0/ext/string_conversions.h \
+ /usr/include/c++/7.2.0/cstdlib /usr/include/stdlib.h \
+ /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
+ /usr/include/sys/types.h /usr/include/sys/select.h \
+ /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
+ /usr/include/bits/types/__sigset_t.h /usr/include/sys/sysmacros.h \
+ /usr/include/bits/sysmacros.h /usr/include/alloca.h \
+ /usr/include/bits/stdlib-float.h /usr/include/c++/7.2.0/bits/std_abs.h \
+ /usr/include/c++/7.2.0/cstdio /usr/include/stdio.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/bits/stdio_lim.h \
+ /usr/include/bits/sys_errlist.h /usr/include/c++/7.2.0/cerrno \
+ /usr/include/errno.h /usr/include/bits/errno.h \
+ /usr/include/linux/errno.h /usr/include/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/c++/7.2.0/bits/functional_hash.h \
+ /usr/include/c++/7.2.0/bits/basic_string.tcc \
+ /usr/include/c++/7.2.0/bits/locale_classes.tcc \
+ /usr/include/c++/7.2.0/system_error \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/error_constants.h \
+ /usr/include/c++/7.2.0/stdexcept /usr/include/c++/7.2.0/streambuf \
+ /usr/include/c++/7.2.0/bits/streambuf.tcc \
+ /usr/include/c++/7.2.0/bits/basic_ios.h \
+ /usr/include/c++/7.2.0/bits/locale_facets.h \
+ /usr/include/c++/7.2.0/cwctype /usr/include/wctype.h \
+ /usr/include/bits/wctype-wchar.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/7.2.0/bits/streambuf_iterator.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/ctype_inline.h \
+ /usr/include/c++/7.2.0/bits/locale_facets.tcc \
+ /usr/include/c++/7.2.0/bits/basic_ios.tcc \
+ /usr/include/c++/7.2.0/bits/ostream.tcc /usr/include/c++/7.2.0/istream \
+ /usr/include/c++/7.2.0/bits/istream.tcc /usr/include/c++/7.2.0/fstream \
+ /usr/include/c++/7.2.0/bits/codecvt.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/7.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/7.2.0/bits/fstream.tcc ../../../include/log_mgr.h \
+ ../../../include/shm.h
