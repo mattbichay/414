@@ -1,3 +1,8 @@
+/* Name: Matthew Bichay
+ * Course: Systems Development in the Unix Environment
+ * Semester: Fall 2017
+ * Description: Main file for the monitor_shm binary.
+ */
 #include "shared_mem.h"
 #include "shm.h"
 #include "log_mgr.h"
@@ -5,16 +10,19 @@
 #include <iostream>
 #include <cstdlib>
 
+/* default time for the monitor to run */
 #define DEFAULT_TIME 30;
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+    /* If another argument is present, set the time to monitor */
     int time = DEFAULT_TIME;
     if (argc > 1)
         time = atoi(argv[1]);
 
+    /* Connect to shared memory segment using KEY */
     Shm_Struct * data = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
     if (data == NULL)
     {
@@ -22,6 +30,8 @@ int main(int argc, char *argv[])
         return ERROR;
     }
 
+    /* Loop for designated amount of time and monitor the data for valid
+     * entries */
     for (int i = 0; i < time; ++i)
     {
         sleep(1);

@@ -1,3 +1,8 @@
+/* Name: Matthew Bichay
+ * Course: Systems Development in the Unix Environment
+ * Semester: Fall 2017
+ * Description: Main file for the install_data binary.
+ */
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,9 +15,16 @@
 
 using namespace std;
 
+/* Static instantiations for the Shm_Struct and file streams */
 static ifstream * F_STREAM;
 static Shm_Struct * DATA;
 
+/* handle_sighup provides implementation details for how install_data reacts to
+ * receiving a SIGHUP signal
+ * 
+ * handle_sighup re-initializes all data to 0s and returns the file pointer to
+ * the top of the file.
+ */
 void handle_sighup(int sig)
 {
     F_STREAM->clear();
@@ -25,6 +37,12 @@ void handle_sighup(int sig)
     }
 }
 
+/* handle_sigterm provides implementation details for how install_data reacts
+ * to receiving a SIGTERM signal
+ *
+ * handle_sigterm detaches and destroys the shared memory segment. It then
+ * closes the file stream and exits the program.
+ */
 void handle_sigterm(int sig)
 {
     if (detach_shm(DATA) < 0)
@@ -41,8 +59,10 @@ void handle_sigterm(int sig)
     exit(sig);
 }
 
+
 int main(int argc, char * argv[])
 {
+    /* Check to see if input file is received */
     if (argc < 2)
     {
         log_event(FATAL, "Error:%s", "Input file is required.");
@@ -51,8 +71,10 @@ int main(int argc, char * argv[])
 
     std::string in_file(argv[1]);
     
+    /* Open a new file stream */
     F_STREAM = new ifstream(in_file.c_str(), ifstream::in);
     
+    /* Open a new shared memory connection */
     DATA = (Shm_Struct *)connect_shm(KEY, sizeof(Shm_Struct) * TOTAL);
     if (DATA == NULL)
     {
@@ -60,9 +82,11 @@ int main(int argc, char * argv[])
         return ERROR;
     }
 
+    /* Register signals */
     signal(SIGHUP, handle_sighup);
     signal(SIGTERM, handle_sigterm);
 
+    /* While there is still lines to read in the file, read line-by-line */
     std::string line;
     while(std::getline(*F_STREAM, line))
     {
@@ -90,6 +114,7 @@ int main(int argc, char * argv[])
     }
     F_STREAM->close();
 
+    /* cleanup */
     if (destroy_shm(KEY) < 0)
     {
         log_event(FATAL, "Error:%s", "Could not destroy shared memory.");

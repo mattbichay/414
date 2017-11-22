@@ -12,6 +12,8 @@
 Shm_Metadata Shm_Manager[LIMIT];
 int connections = -1;
 
+/* Initialize_manager is an internal function used for initializing the
+ * Shm_Metadata to default values. */
 void initialize_manager()
 {
     for (int i = 0; i < LIMIT; ++i)
@@ -24,8 +26,12 @@ void initialize_manager()
     connections++;
 }
 
+/* connect_shm takes a key and size input and returns a shared memory address
+ * pointer. If an error occurs, NULL is returned.
+ */
 void * connect_shm(int key, int size)
 {
+    /* Check if the # of connections is already larger than the limit */
     if (connections > LIMIT)
         return NULL;
     if (connections < 0)
@@ -47,6 +53,7 @@ void * connect_shm(int key, int size)
         return NULL;
     }
 
+    /* Initialize the shm metadate in the manager struct with key metadata */
     for (int i = 0; i < LIMIT; ++i)
     {
         if (!Shm_Manager[i].in_use)
@@ -62,12 +69,16 @@ void * connect_shm(int key, int size)
     return NULL;
 }
 
-
+/* detach_shm takes a shared memory address and detaches it for use, freeing it
+ * up for other connections
+ */
 int detach_shm(void * addr)
 {
     if (connections < 0)
         return ERROR;
 
+    /* Find the shm address in the shm_manager and shmdt that address if it
+     * exists */
     for (int i = 0; i < LIMIT; ++i)
     {
         if (Shm_Manager[i].addr == addr)
@@ -82,12 +93,15 @@ int detach_shm(void * addr)
     return ERROR;
 }
 
-
+/* destroy_shm takes an input key and detaches and removes all shared memory
+ * segments associated with the input key
+ */
 int destroy_shm(int key)
 {
     if (connections < 0)
         return ERROR;
-
+    
+    /* find the shmid in the Shm_manager and detach it. */
     int shmid = -1;
     for (int i = 0; i < LIMIT; ++i)
     {
@@ -98,6 +112,8 @@ int destroy_shm(int key)
             shmid = Shm_Manager[i].shmid;
         }
     }
+
+    /* If the shmid exists, use shmctl to remove the id */
     if (shmid < 0)
         return ERROR;
     
