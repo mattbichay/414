@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <unistd.h>
 #include <sstream>
+#include <cstdlib>
 #include "log_mgr.h"
 #include "shm.h"
 
@@ -12,14 +13,14 @@
 using namespace std;
 
 
-static ifstream F_STREAM;
+static ifstream * F_STREAM;
 static Shm_Struct DATA[TOTAL];
 static int TIME;
 
 void handle_sighup(int sig)
 {
-    F_STREAM.clear();
-    F_STREAM.seekg(0, ios::beg);
+    F_STREAM->clear();
+    F_STREAM->seekg(0, ios::beg);
     for (int i = 0; i < TOTAL; ++i)
     {
         DATA[i].is_valid = 0;
@@ -30,14 +31,14 @@ void handle_sighup(int sig)
 
 void handle_sigterm(int sig)
 {
-    F_STREAM.close();
+    F_STREAM->close();
     exit(sig);
 }
 
 void * install_data(void *ptr)
 {
     std::string line;
-    while(std::getline(F_STREAM, line))
+    while(std::getline(*F_STREAM, line))
     {
         int index, time;
         float x,y;
@@ -61,7 +62,7 @@ void * install_data(void *ptr)
         DATA[index].y = y;
 
     }
-    F_STREAM.close();
+    F_STREAM->close();
     pthread_exit(NULL);
 }
 
@@ -108,7 +109,7 @@ int main(int argc, char * argv[])
         TIME = atoi(argv[1]);
 
     std::string in_file(argv[1]);
-    F_STREAM = ifstream(in_file, ifstream::in);
+    F_STREAM = new ifstream(in_file.c_str(), ifstream::in);
     
     signal(SIGHUP, handle_sighup);
     signal(SIGTERM, handle_sigterm);
